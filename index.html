@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"/>
-    <link rel="stylesheet" href="./assets/css/style.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
     <title>Weather Dashboard</title>
 </head>
 
@@ -35,8 +35,12 @@
                 <div class="row mx-2 border border-secondary rounded">
                     <!-- current weather -->
                     <div class="crnt-weather col-sm-12">
-                        <h3 class=" city-name crnt-city mb-1 mt-2  bolder"></h3>
-                        <img id="current-pic" src="placeholder" alt="">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <span class="crnt-city mb-1 mt-2" bolder></span>
+                                        <img id="current-pic" src="" alt="">
+                            </div>
+                        </div>
                         <p>Temperature: <span class="crnt-temp"></span></p>
                         <p>Humidity: <span class="crnt-hmdt"></span></p>
                         <p>Wind Speed: <span class="crnt-wind"></span></p>
@@ -45,20 +49,21 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-12">
+                    <div class="col-sm-12">
                         <h3>5-Day Forecast</h3>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col forecast bg-primary text-white ml-3 mb-3 rounded"></div>
-                    <div class="col forecast bg-primary text-white ml-3 mb-3 rounded"></div>
-                    <div class="col forecast bg-primary text-white ml-3 mb-3 rounded"></div>
-                    <div class="col forecast bg-primary text-white ml-3 mb-3 rounded"></div>
-                    <div class="col forecast bg-primary text-white ml-3 mb-3 rounded"></div>
+                    <div class="col-sm forecast bg-primary text-white ml-3 mb-3 rounded"></div>
+                    <div class="col-sm forecast bg-primary text-white ml-3 mb-3 rounded"></div>
+                    <div class="col-sm forecast bg-primary text-white ml-3 mb-3 rounded"></div>
+                    <div class="col-sm forecast bg-primary text-white ml-3 mb-3 rounded"></div>
+                    <div class="col-sm forecast bg-primary text-white ml-3 mb-3 rounded"></div>
                 </div>
             </div>
         </div>
     </div>
+    <script src="./assets/js/script.js"></script>
 </body>
 
 </html>

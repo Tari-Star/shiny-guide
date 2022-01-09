@@ -10,6 +10,12 @@ body {
 header {
   background: linear-gradient(to left, #055cb3 0%, #ccffff 100%);
 }
+.crnt-weather {
+  background-color:#d6f8f8;
+}
+.crnt-city {
+  font-size: 30px;
+}
 .btn {
   outline: auto;
   background-color: #0d65bd;
