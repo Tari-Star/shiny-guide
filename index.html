@@ -1,12 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Weather Dashboard</title>
 </head>
+
 <body>
-    
+    <div class="container border border-dark ">
+        <header class="container-fluid mt-2 text-center text-white">
+            <h1><strong>Weather Dashboard</strong></h1>
+        </header>
+        <div class="row">
+            <!-- search city -->
+            <div class="col-sm-4">
+                <h3 class="pt-1"><strong>Search for a City: </strong></h3>
+                <div class="mb-3">
+                    <input type="text" class="form-control srch-city" placeholder="Enter city name"
+                        aria-label="Enter city name" />
+                    <div class="d-grid">
+                        <button class="srch-btn btn-primary btn-block" type="button">search</button>
+                    </div>
+                </div>
+                <button class="btn btn-primary mb-3" type="button" id="clear-history">Clear history</button>
+                <form id="history"></form>
+            </div>
+            <!-- dashboard -->
+            <div class="col-sm-8">
+                <div class="row mx-2 border border-secondary rounded">
+                    <!-- current weather -->
+                    <div class="crnt-weather col-sm-12">
+                        <h3 class=" city-name crnt-city mb-1 mt-2  bolder"></h3>
+                        <img id="current-pic" src="placeholder" alt="">
+                        <p>Temperature: <span class="crnt-temp"></span></p>
+                        <p>Humidity: <span class="crnt-hmdt"></span></p>
+                        <p>Wind Speed: <span class="crnt-wind"></span></p>
+                        <p>UV Index: <span class="crnt-uv bg-danger rounded py-2 px-2 text-white" id="uv-index"></span>
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <h3>5-Day Forecast</h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col forecast bg-primary text-white ml-3 mb-3 rounded"></div>
+                    <div class="col forecast bg-primary text-white ml-3 mb-3 rounded"></div>
+                    <div class="col forecast bg-primary text-white ml-3 mb-3 rounded"></div>
+                    <div class="col forecast bg-primary text-white ml-3 mb-3 rounded"></div>
+                    <div class="col forecast bg-primary text-white ml-3 mb-3 rounded"></div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
+
 </html>
