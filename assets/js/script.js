@@ -9,19 +9,13 @@ function loadPage() {
   var currentHumidity = document.querySelector(".crnt-hmdt");
   var currentWind = document.querySelector(".crnt-wind");
   var currentUv = document.querySelector(".crnt-uv");
-  var historyList = document.querySelector(".history");
+  var historyList = document.querySelector(".history")
   var sCity = JSON.parse(localStorage.getItem("search")) || [];
-  console.log(sCity);
-
-  //variables for forecast
-  var forecastDate = document.querySelector("#fcDate");
-  var forecastImg = document.querySelector("#fcImg");
-  var forecastTemp = document.querySelector("#fcTemp");
-  var forecastWind = document.querySelector("#fcWind");
-  var forecastHumidity = document.querySelector("#fcHmdt");
+  console.log(sCity)
+  
 
   // search city
-  searchBtn.addEventListener("click", function () {
+  searchBtn.addEventListener("click", function(){
     var sTerm = searchCity.value;
     currentWeather(sTerm);
     sCity.push(sTerm);
@@ -29,10 +23,10 @@ function loadPage() {
     displayWeather();
     renderSearchCity();
   });
-  clearBtn.addEventListener("click", function () {
+  clearBtn.addEventListener("click", function(){
     sCity = [];
     renderSearchCity();
-  });
+  })
   // display current weather and 5day forecast
   function displayWeather() {
     currentWeather();
@@ -90,59 +84,56 @@ function loadPage() {
       var forecastEls = document.querySelector(".forecast");
       for (i = 0; i < forecastEls.length; i++) {
         forecastEls[i].innerHTML = "";
-        var fIndex = (i + 1) * 8 - 1;
-        var forecastDate = new Date(
-          response.list[fIndex].dt * 1000
-        ).toLocaleDateString();
+        var forecastIndex = i*8 + 4;
+        var forecastDate = new Date(response.list[forecastIndex].dt * 1000);
         var forecastDay = forecastDate.getDate();
         var forecastMonth = forecastDate.getMonth() + 1;
         var forecastYear = forecastDate.getFullYear();
         var forecastDateEl = document.createElement("p");
         forecastDateEl.setAttribute("class", "mt-3 mb-0 forecast-date");
-        forecastDateEl.innerHTML =
-          forecastMonth + "/" + forecastDay + "/" + forecastYear;
+        forecastDateEl.innerHTML = forecastMonth + "/" + forecastDay + "/" + forecastYear;
         forecastEls[i].append(forecastDateEl);
         var forecastWeatherEl = document.createElement("img");
         forecastWeatherEl.setAttribute(
           "src",
           "http://openweathermap.org/img/wn/" +
-            response.list[fIndex].weather[0].icon +
+            response.list[forecastIndex].weather[0].icon +
             "@2x.png"
         );
         forecastWeatherEl.setAttribute(
           "alt",
-          response.list[fIndex].weather[0].description
+          response.list[forecastIndex].weather[0].description
         );
         forecastEls[i].appendC(forecastWeatherEl);
         var forecastTempEl = document.createElement("p");
         forecastTempEl.innerHTML =
-          "Temp: " + response.list[fIndex].main.temp + " " + "°F";
+          "Temp: " + response.list[forecastIndex].main.temp + " " + "°F";
         forecastEls[i].append(forecastTempEl);
         var forecastWindEl = document.createElement("p");
         forecastWindEl.innerHTML =
-          "Wind: " + response.list[fIndex].wind.speed + " " + "MPH";
+          "Wind: " + response.list[forecastIndex].wind.speed + " " + "MPH";
         forecastEls[i].append(forecastWindEl);
         var forecastHmdtEl = document.createElement("p");
         forecastHmdtEl.innerHTML =
-          "Humidity: " + response.list[fIndex].main.humidity + " " + "%";
+          "Humidity: " + response.list[forecastIndex].main.humidity + " " + "%";
         forecastEls[i].append(forecastHmdtEl);
       }
     });
   }
   function renderSearchCity() {
-    historyList.innerHTML = "";
-    for (var i = 0; i < sCity.length; i++) {
-      var hItem = document.createElement("input");
-      hItem.value.toUpperCase();
-      hItem.setAttribute("type", "text");
-      hItem.setAttribute("readonly", true);
-      hItem.setAttribute("class", "form-control d-block bg-white");
-      hItem.setAttribute("value", sCity[i]);
-      hItem.addEventListener("click", function () {
-        currentWeather(hItem.value);
-      });
-      historyList.append(hItem);
-    }
+   historyList.innerHTML = "";
+   for (var i = 0; i < sCity.length; i++){
+     var hItem = document.createElement("input");
+     hItem.value.toUpperCase();
+     hItem.setAttribute("type", "text");
+     hItem.setAttribute("readonly", true);
+     hItem.setAttribute("class", "form-control d-block bg-white");
+     hItem.setAttribute("value", sCity[i]);
+     hItem.addEventListener("click", function(){
+       currentWeather(hItem.value);
+     })
+     historyList.append(hItem);
+   }
   }
 }
 loadPage();
