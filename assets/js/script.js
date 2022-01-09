@@ -2,22 +2,36 @@ function loadPage() {
   //variables for search
   var searchCity = document.querySelector(".srch-city");
   var searchBtn = document.querySelector("#srch-btn");
+  var clearBtn = document.querySelector("#clear-history");
   var currentCity = document.querySelector(".crnt-city");
   var currentPic = document.querySelector("#current-pic");
   var currentTemp = document.querySelector(".crnt-temp");
   var currentHumidity = document.querySelector(".crnt-hmdt");
   var currentWind = document.querySelector(".crnt-wind");
   var currentUv = document.querySelector(".crnt-uv");
-  var searchHistory = JSON.parse(localStorage.getItem("search")) || [];
-  console.log(searchHistory);
+  var historyList = document.querySelector(".history")
+  var sCity = JSON.parse(localStorage.getItem("search")) || [];
+  console.log(sCity)
+  
 
   // search city
-  searchBtn.addEventListener("click", displayWeather);
-
+  searchBtn.addEventListener("click", function(){
+    var sTerm = searchCity.value;
+    currentWeather(sTerm);
+    sCity.push(sTerm);
+    localStorage.setItem("search", JSON.stringify(sCity));
+    displayWeather();
+    renderSearchCity();
+  });
+  clearBtn.addEventListener("click", function(){
+    sCity = [];
+    renderSearchCity();
+  })
   // display current weather and 5day forecast
   function displayWeather() {
     currentWeather();
     forecast();
+    renderSearchCity();
   }
 
   // display current weather
@@ -70,7 +84,7 @@ function loadPage() {
       var forecastEls = document.querySelector(".forecast");
       for (i = 0; i < forecastEls.length; i++) {
         forecastEls[i].innerHTML = "";
-        var forecastIndex = i * 8 + 4;
+        var forecastIndex = i*8 + 4;
         var forecastDate = new Date(response.list[forecastIndex].dt * 1000);
         var forecastDay = forecastDate.getDate();
         var forecastMonth = forecastDate.getMonth() + 1;
@@ -105,6 +119,21 @@ function loadPage() {
         forecastEls[i].append(forecastHmdtEl);
       }
     });
+  }
+  function renderSearchCity() {
+   historyList.innerHTML = "";
+   for (var i = 0; i < sCity.length; i++){
+     var hItem = document.createElement("input");
+     hItem.value.toUpperCase();
+     hItem.setAttribute("type", "text");
+     hItem.setAttribute("readonly", true);
+     hItem.setAttribute("class", "form-control d-block bg-white");
+     hItem.setAttribute("value", sCity[i]);
+     hItem.addEventListener("click", function(){
+       currentWeather(hItem.value);
+     })
+     historyList.append(hItem);
+   }
   }
 }
 loadPage();
