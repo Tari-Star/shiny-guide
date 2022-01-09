@@ -5,6 +5,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="./assets/css/style.css"/>
     <title>Weather Dashboard</title>
 </head>
 
@@ -21,10 +24,10 @@
                     <input type="text" class="form-control srch-city" placeholder="Enter city name"
                         aria-label="Enter city name" />
                     <div class="d-grid">
-                        <button class="srch-btn btn-primary btn-block" type="button">search</button>
+                        <button class="btn btn-primary btn-block" type="button" id="srch-btn">search</button>
                     </div>
                 </div>
-                <button class="btn btn-primary mb-3" type="button" id="clear-history">Clear history</button>
+                <button class="btn btn-primary btn-block" type="button" id="clear-history">Clear history</button>
                 <form id="history"></form>
             </div>
             <!-- dashboard -->
