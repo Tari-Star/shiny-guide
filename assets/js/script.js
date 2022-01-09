@@ -60,5 +60,51 @@ function loadPage() {
         currentUv.textContent = response.current.uvi;
       });
   }
+
+  function forecast(city) {
+    city = searchCity.value.trim();
+    fetch(
+      `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=e0b9dd39426ecb04b13153bdbe50f759`
+    ).then(function (response) {
+      console.log(response);
+      var forecastEls = document.querySelector(".forecast");
+      for (i = 0; i < forecastEls.length; i++) {
+        forecastEls[i].innerHTML = "";
+        var forecastIndex = i * 8 + 4;
+        var forecastDate = new Date(response.list[forecastIndex].dt * 1000);
+        var forecastDay = forecastDate.getDate();
+        var forecastMonth = forecastDate.getMonth() + 1;
+        var forecastYear = forecastDate.getFullYear();
+        var forecastDateEl = document.createElement("p");
+        forecastDateEl.setAttribute("class", "mt-3 mb-0 forecast-date");
+        forecastDateEl.innerHTML = forecastMonth + "/" + forecastDay + "/" + forecastYear;
+        forecastEls[i].append(forecastDateEl);
+        var forecastWeatherEl = document.createElement("img");
+        forecastWeatherEl.setAttribute(
+          "src",
+          "http://openweathermap.org/img/wn/" +
+            response.list[forecastIndex].weather[0].icon +
+            "@2x.png"
+        );
+        forecastWeatherEl.setAttribute(
+          "alt",
+          response.list[forecastIndex].weather[0].description
+        );
+        forecastEls[i].appendC(forecastWeatherEl);
+        var forecastTempEl = document.createElement("p");
+        forecastTempEl.innerHTML =
+          "Temp: " + response.list[forecastIndex].main.temp + " " + "°F";
+        forecastEls[i].append(forecastTempEl);
+        var forecastWindEl = document.createElement("p");
+        forecastWindEl.innerHTML =
+          "Wind: " + response.list[forecastIndex].wind.speed + " " + "MPH";
+        forecastEls[i].append(forecastWindEl);
+        var forecastHmdtEl = document.createElement("p");
+        forecastHmdtEl.innerHTML =
+          "Humidity: " + response.list[forecastIndex].main.humidity + " " + "%";
+        forecastEls[i].append(forecastHmdtEl);
+      }
+    });
+  }
 }
 loadPage();
