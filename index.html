@@ -28,7 +28,8 @@
                     </div>
                 </div>
                 <button class="btn btn-primary btn-block" type="button" id="clear-history">Clear history</button>
-                <form class="history"></form>
+                <!-- searched cities history -->
+               <form class="history"></form>
             </div>
             <!-- dashboard -->
             <div class="col-sm-8">
@@ -38,7 +39,7 @@
                         <div class="row">
                             <div class="col-sm-12">
                                 <span class="crnt-city mb-1 mt-2" bolder></span>
-                                        <img id="current-pic" src="" alt="">
+                                <img id="current-pic" src="" alt="">
                             </div>
                         </div>
                         <p>Temperature: <span class="crnt-temp"></span></p>
@@ -48,17 +49,10 @@
                         </p>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-sm-12">
-                        <h3>5-Day Forecast</h3>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col forecast bg-primary text-white ml-3 mb-3 rounded"></div>
-                    <div class="col forecast bg-primary text-white ml-3 mb-3 rounded"></div>
-                    <div class="col forecast bg-primary text-white ml-3 mb-3 rounded"></div>
-                    <div class="col forecast bg-primary text-white ml-3 mb-3 rounded"></div>
-                    <div class="col forecast bg-primary text-white ml-3 mb-3 rounded"></div>
+                <!-- Forecast -->
+                <div class="col-sm-12">
+                    <h3>5-Day Forecast</h3>
+                    <div class="row text-light" id="fiveDay"></div>
                 </div>
             </div>
         </div>

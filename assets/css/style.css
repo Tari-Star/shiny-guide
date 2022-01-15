@@ -23,3 +23,12 @@ header {
 .btn :hover {
   background-color: #8db3c2;
 }
+.history .form-control {
+  margin-top: 5px;
+  text-align: center;
+}
+ .forecast p{
+  font-size: 13px;
+  text-align: left;
+}
+
