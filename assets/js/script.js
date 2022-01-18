@@ -167,11 +167,3 @@
     searchedCities(uniqueList);
   }
 
-  // function handleHistoryClick(e) {
-  // historyList.val(e.target.textContent);
-  // hItem = historyList.value;
-  //   displayWeather(searchValue);
-  // }
-
-  historyList.addEventListener("click", handleHistoryClick);
-
