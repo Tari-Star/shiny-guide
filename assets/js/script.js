@@ -72,6 +72,14 @@
       .then((response) => response.json())
       .then(function (response) {
         currentUv.textContent = response.current.uvi;
+        var cUv = response.current.uvi;
+        if(cUv<1){
+          currentUv.style.backgroundColor = "green";
+        } else if(cUv<3){
+          currentUv.style.backgroundColor = "yellow";
+        } else {
+          currentUv.style.backgroundColor = "red";
+        }
       });
   }
 
